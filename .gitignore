@@ -1,0 +1,10 @@
+.venv/
+.env/
+source/.env
+__pycache__/
+source/*.xlsx
+source/*.csv
+
+
+# Internal data
+source/*.xlsx
