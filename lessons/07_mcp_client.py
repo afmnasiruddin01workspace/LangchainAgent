@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from langchain.agents import create_agent
 from langchain_mcp_adapters.client import MultiServerMCPClient
 
-load_dotenv("source/.env")
+load_dotenv(Path(__file__).parent.parent / "source" / ".env")
 SERVER = str(Path(__file__).parent/"07_bom_server.py")
 
 async def main():
@@ -28,9 +28,7 @@ async def main():
 
     out =  await agent.ainvoke({
         "messages":[
-            {"role": "user", "content":"which sheets are in the workbook?"},
-            {"role": "user", "content":"Search 'screw' in the roofing screw sheet"}
-            
+            {"role": "user", "content": "Which sheets are in the workbook? Then search 'screw' in the 'roofing screw' sheet."}
         ]
     })
 
