@@ -4,20 +4,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Claude Code practice project for learning Claude Code fundamentals and the Claude Agent SDK. It's intentionally minimal to focus on core concepts: file operations, git integration, and project organization.
+This is a LangChain/LangGraph agent practice project (repo: `LangchainAgent`, formerly `ClaudeAgentSDK`). Numbered lessons in `lessons/` build up an agent over an Excel BOM workbook: model, messages, tools, agent, memory, hooks, MCP server/client, role-based access, and a Streamlit UI.
 
 ## Running the Project
 
-**Run the main script:**
 ```bash
-python main.py
+pip install -r requirements.txt
+python lessons/08c_secure_agent.py   # CLI chat with login
+streamlit run lessons/08d_app.py     # web chat
 ```
 
-Expected output: `Hello, World!`
+Secrets live in `source/.env` (git-ignored); user credentials in `users.json` (git-ignored, create with `python lessons/users.py`).
 
 ## Project Structure
 
-- `main.py` — Single Python file with a `hello_world()` function demonstrating basic patterns
+- `lessons/` — numbered lesson scripts plus helpers (`bom_tools.py`, `access.py`, `users.py`)
+- `source/` — BOM workbook and `.env`
 - `.claude/settings.json` — Project-scoped Claude Code configuration (permissions, environment variables, hooks)
 
 ## Git Workflow

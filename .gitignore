@@ -7,4 +7,4 @@ source/*.csv
 
 
 # Internal data
-source/*.xlsx
+users.json

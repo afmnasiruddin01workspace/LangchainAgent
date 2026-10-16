@@ -1,80 +1,41 @@
-# Claude Code Essential Practice - ClaudeAgentSDK
+# LangchainAgent
 
-A learning project for practicing Claude Code fundamentals and exploring the Claude Agent SDK.
+A learning project for building LangChain / LangGraph agents, step by step, on top of an Excel BOM workbook.
 
-## Overview
-
-This project demonstrates basic Claude Code concepts including:
-- File operations (reading, writing, editing)
-- Git integration and version control
-- Running Python scripts
-- Project organization
-
-## Project Structure
-
-```
-ClaudeAgentSDK/
-├── main.py          # Main Python script with hello_world function
-└── README.md        # This file
-```
-
-## Getting Started
-
-### Prerequisites
-
-- Python 3.x
-- Git
-- Claude Code CLI
-
-### Running the Project
-
-To run the hello world function:
+## Setup
 
 ```bash
-python main.py
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
 ```
 
-Expected output:
-```
-Hello, World!
-```
+Put your `OPENAI_API_KEY` in `source/.env` and the BOM workbook at `source/BOM.xlsx` (both git-ignored where sensitive).
 
-## Features
+## Lessons (`lessons/`)
 
-### main.py
+| File | Topic |
+|------|-------|
+| `01_model.py` | Calling a chat model |
+| `02_messages.py` | Message types |
+| `03_tools.py`, `03b_test_tools.py` | Defining and testing tools |
+| `04_agent.py` | `create_agent` |
+| `05_memory.py` | Conversation memory (checkpointer) |
+| `06_hooks.py` | Middleware hooks |
+| `07_bom_server.py`, `07_mcp_client.py` | BOM tools exposed over MCP, consumed by an agent |
+| `08b_test_access.py` | Testing role-based access rules |
+| `08c_secure_agent.py` | CLI agent with login + role-based tool guard |
+| `08d_app.py` | Streamlit chat UI with login |
+| `bom_tools.py`, `access.py`, `users.py` | Shared helpers (BOM tools, access rules, password auth) |
 
-Contains a simple `hello_world()` function that demonstrates:
-- Basic Python function definition
-- Print output
-- Main block execution pattern
-
-## Development
-
-This project is being developed on the `feature/quickstart` branch as part of the Claude Code quickstart practice.
-
-### Current Branch
+## Running
 
 ```bash
-git branch
-# Output: * feature/quickstart
+python lessons/users.py                 # create demo users (writes users.json)
+python lessons/08c_secure_agent.py      # CLI chat
+streamlit run lessons/08d_app.py        # web chat
 ```
-
-### Making Changes
-
-1. Make changes on the `feature/quickstart` branch
-2. Commit with descriptive messages
-3. Review changes before merging to main
-
-## Learning Resources
-
-- [Claude Code Quickstart](https://code.claude.com/docs/en/quickstart)
-- Claude Code Documentation
-- Claude Agent SDK Guide
 
 ## License
 
-This is a practice/learning project.
-
----
-
-Created and maintained for Claude Code practice.
+Practice / learning project.
